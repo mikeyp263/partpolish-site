@@ -76,7 +76,9 @@ h2{font-size:clamp(2rem,3.8vw,2.9rem);line-height:1.08;letter-spacing:-.035em;fo
 .pcard .top{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .pill{font-size:.78rem;font-weight:700;padding:4px 11px;border-radius:99px;letter-spacing:0;text-transform:none}
 .pill.bad{background:var(--redbg);color:var(--red)}.pill.good{background:var(--teal);color:#fff}
-.pcard .img{height:220px;display:grid;place-items:center;background:linear-gradient(180deg,#f3f6f9,#e9eef3)}
+.pcard .img{height:260px;display:grid;place-items:center;background:linear-gradient(180deg,#f3f6f9,#e9eef3);padding:20px}
+.pcard .img img,.slide .pic img{max-width:100%;max-height:220px;width:auto;height:auto;object-fit:contain;mix-blend-mode:multiply}
+.slide .pic img{max-height:330px}
 .pcard .body{padding:22px 24px 26px}
 .pcard h3{margin:0 0 6px;font-size:1.2rem;letter-spacing:-.02em;line-height:1.25}
 .pcard .ids{font-size:.84rem;color:var(--muted);margin:0 0 14px}.pcard .ids b{color:var(--teal)}
@@ -173,17 +175,6 @@ footer{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:110px}
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute">
-  <defs>
-    <linearGradient id="steel" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#3a3f45"/><stop offset=".45" stop-color="#16191c"/><stop offset="1" stop-color="#050607"/></linearGradient>
-    <linearGradient id="gold" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f3dc9a"/><stop offset=".5" stop-color="#c9a24f"/><stop offset="1" stop-color="#7d5f21"/></linearGradient>
-    <g id="drill">
-      <rect x="20" y="88" width="150" height="24" rx="5" fill="url(#steel)"/>
-      <path d="M170 88 H360 L392 100 L360 112 H170 Z" fill="url(#steel)"/>
-      <g fill="url(#gold)"><path d="M178 88 h18 l26 24 h-18z"/><path d="M214 88 h18 l26 24 h-18z"/><path d="M250 88 h18 l26 24 h-18z"/><path d="M286 88 h18 l26 24 h-18z"/><path d="M322 88 h18 l24 22 h-18z"/></g>
-    </g>
-  </defs>
-</svg>
 
 <nav><div class="wrap">
   <a class="logo" href="#"><i></i>PartPolish</a>
@@ -246,7 +237,7 @@ footer{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:110px}
     </div>
     <div class="pcard">
       <div class="top">After PartPolish <span class="pill good">Quality 92%</span></div>
-      <div class="img"><svg width="300" viewBox="0 0 400 200"><use href="#drill" transform="rotate(-20 200 100)"/></svg></div>
+      <div class="img"><img src="img/champion-xgo-v.jpg" alt="Champion XGO letter V jobber drill bit"></div>
       <div class="body">
         <h3>Letter V High-Speed Steel Jobber Drill Bit, 135° Split Point, Black &amp; Gold</h3>
         <p class="ids">SKU <b>VDR/CCTXGO</b> · Mfr part # XGO-V</p>
@@ -282,7 +273,7 @@ footer{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:110px}
   </div>
   <div class="slider" id="slider">
     <div class="slide a">
-      <div class="pic"><svg width="100%" style="max-width:320px" viewBox="0 0 400 200"><use href="#drill" transform="rotate(-25 200 100)"/></svg></div>
+      <div class="pic"><img src="img/milwaukee-48-89-4607.jpg" alt="Milwaukee 5/32 inch titanium impact drill bit"></div>
       <div class="txt"><span class="tag">AFTER</span><h3>Milwaukee 5/32" Titanium-Coated Impact Drill Bit, 1/4" Hex Shank</h3>
         <p class="ids" style="color:var(--muted);font-size:.86rem;margin:0">SKU <b style="color:var(--teal)">MIL48-89-4607</b> · Mfr part # 48-89-4607 · Sold as 1 bit</p>
         <div class="grid2"><div class="kv"><span>Size</span><b>5/32"</b></div><div class="kv"><span>Shank</span><b>1/4" hex</b></div><div class="kv"><span>Finish</span><b>Titanium</b></div><div class="kv"><span>Point</span><b>135° split</b></div><div class="kv"><span>Overall length</span><b>2.75"</b></div><div class="kv"><span>Category</span><b>Drill bits</b></div></div></div>
