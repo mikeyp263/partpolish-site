@@ -34,7 +34,6 @@ nav .wrap{display:flex;align-items:center;gap:28px;height:68px}
 .hero{background:radial-gradient(1200px 500px at 70% -10%,#e2f1ed 0,rgba(226,241,237,0) 60%),var(--bg);padding:84px 0 0;overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:56px;align-items:center}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
-.eyebrow:before{content:"";width:18px;height:2px;background:var(--teal)}
 h1{font-size:clamp(2.5rem,5.2vw,4rem);line-height:1.02;letter-spacing:-.045em;font-weight:800;margin:16px 0 20px}
 h1 em{font-style:normal;color:var(--teal)}
 .lede{font-size:1.15rem;color:var(--muted);margin:0 0 30px;max-width:540px}
@@ -134,7 +133,6 @@ h2{font-size:clamp(2rem,3.8vw,2.9rem);line-height:1.08;letter-spacing:-.035em;fo
 .price ul{list-style:none;padding:0;margin:18px 0 26px;flex:1}.price li{padding:7px 0;border-top:1px solid var(--line);font-size:.93rem;display:flex;gap:10px}
 .price li:before{content:"✓";color:var(--teal);font-weight:800}
 .price .card.hot{border:2px solid var(--teal);position:relative}
-.price .card.hot:before{content:"Best place to start";position:absolute;top:-13px;left:24px;background:var(--teal);color:#fff;font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:99px}
 .price .btn{justify-content:center}
 
 /* faq */
@@ -146,16 +144,16 @@ summary:after{content:"+";position:absolute;right:4px;top:12px;font-size:1.5rem;
 details[open] summary:after{content:"–"}
 details p{margin:0 0 18px;color:var(--muted)}
 
-/* cta + footer */
-.final{background:var(--ink);color:#fff;border-radius:32px;padding:72px 48px;text-align:center;position:relative;overflow:hidden}
-.final:before{content:"";position:absolute;inset:auto -10% -60% -10%;height:120%;background:radial-gradient(closest-side,rgba(42,138,126,.45),rgba(42,138,126,0));pointer-events:none}
-.final h2{color:#fff;margin:0 0 14px;position:relative}.final p{color:#b8d3cd;max-width:560px;margin:0 auto 28px;position:relative}
-.final .ctas{justify-content:center;position:relative}.final .btn.light{border:0}
-footer{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:110px}
+/* closing + footer */
+.closing{border-top:1px solid var(--line);padding:90px 0}
+.closing h2{margin:0 0 14px}.closing p{font-size:1.1rem;color:var(--muted);max-width:640px;margin:0 0 10px}
+.closing a{color:var(--teal);font-weight:600;border-bottom:1px solid var(--mint2)}
+.closing .who{font-size:.95rem;color:var(--ink);margin-top:20px}
+footer{padding:56px 0 40px;border-top:1px solid var(--line)}
 .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}
 .fgrid p{color:var(--muted);font-size:.92rem;max-width:320px}
 .fgrid h4{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:6px 0 14px}
-.fgrid a{display:block;font-size:.93rem;margin:8px 0}.fgrid a:hover{color:var(--teal)}
+.fgrid a{display:block;font-size:.93rem;margin:8px 0}.fgrid a.logo{display:flex;font-size:1.15rem;margin:0}.fgrid a:hover{color:var(--teal)}
 .legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line);margin-top:44px;padding-top:22px;color:var(--muted);font-size:.85rem}
 
 @media (max-width:960px){
@@ -170,7 +168,7 @@ footer{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:110px}
   section{padding:80px 0}
   .vs td,.vs th{padding:14px}
 }
-@media (max-width:560px){.four,.slide .grid2,.attrs{grid-template-columns:1fr}.navcta .btn.light{display:none}.final{padding:52px 24px}}
+@media (max-width:560px){.four,.slide .grid2,.attrs{grid-template-columns:1fr}.navcta .btn.light{display:none}}
 </style>
 </head>
 <body>
@@ -254,11 +252,11 @@ footer{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:110px}
 <section class="alt"><div class="wrap">
   <div class="head"><span class="eyebrow">What we do</span><h2>Product data that wins the order.</h2><p>Three things make a listing sell. Most distributor catalogs are missing all three.</p></div>
   <div class="three">
-    <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div><h3>Complete</h3><p>Every attribute a buyer filters on: size, lengths, shank, material, point, finish, pack quantity.</p>
+    <div class="card"><h3>Complete</h3><p>Every attribute a buyer filters on: size, lengths, shank, material, point, finish, pack quantity.</p>
       <div class="ex"><div><span>Before</span><s>2 of 9 filled</s></div><div><span>After</span><u>9 of 9 filled</u></div></div></div>
-    <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12l4.5 4.5L19 7"/></svg></div><h3>Correct</h3><p>Matched to the exact manufacturer part number. Every spec comes from the manufacturer's own data.</p>
+    <div class="card"><h3>Correct</h3><p>Matched to the exact manufacturer part number. Every spec comes from the manufacturer's own data.</p>
       <div class="ex"><div><span>Before</span><s>5/32 TITANIUM DRILL</s></div><div><span>After</span><u>Milwaukee 48-89-4607</u></div></div></div>
-    <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div><h3>Consistent</h3><p>Same title format, same spec order, same units across your whole catalog, so filters and search just work.</p>
+    <div class="card"><h3>Consistent</h3><p>Same title format, same spec order, same units across your whole catalog, so filters and search just work.</p>
       <div class="ex"><div><span>Before</span><s>135DEG · 135 Degree</s></div><div><span>After</span><u>135°</u></div></div></div>
   </div>
 </div></section>
@@ -293,9 +291,9 @@ footer{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:110px}
 <section class="alt" id="accuracy"><div class="wrap">
   <div class="head"><span class="eyebrow">Trust &amp; accuracy</span><h2>Wrong specs are worse than missing ones.</h2><p>A wrong thread size or length means a return and a lost customer. So accuracy comes first, every time.</p></div>
   <div class="three">
-    <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 6 0l3-3a4 4 0 0 0-6-6l-1 1M14 10a4 4 0 0 0-6 0l-3 3a4 4 0 0 0 6 6l1-1"/></svg></div><h3>Every value is sourced</h3><p>Each spec is tied to the manufacturer page or spec sheet it came from, and checked against it.</p></div>
-    <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 8v5M12 16.5v.5"/><circle cx="12" cy="12" r="9"/></svg></div><h3>Unsure means flagged</h3><p>If a value can't be confirmed, it's held for review and never filled in with a guess.</p></div>
-    <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Your SKUs stay yours</h3><p>We never change your SKUs or pricing. Updated listings import right over the old ones.</p></div>
+    <div class="card"><h3>Every value is sourced</h3><p>Each spec is tied to the manufacturer page or spec sheet it came from, and checked against it.</p></div>
+    <div class="card"><h3>Unsure means flagged</h3><p>If a value can't be confirmed, it's held for review and never filled in with a guess.</p></div>
+    <div class="card"><h3>Your SKUs stay yours</h3><p>We never change your SKUs or pricing. Updated listings import right over the old ones.</p></div>
   </div>
 </div></section>
 
@@ -334,13 +332,11 @@ footer{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:110px}
   </div>
 </div></section>
 
-<div class="wrap" id="start">
-  <div class="final">
-    <h2>See it on your own products. Free.</h2>
-    <p>Send us your store link and we'll clean up 10 of your listings, so you can judge the quality before spending anything.</p>
-    <div class="ctas"><a class="btn light" href="mailto:michael@partpolish.com?subject=Free%2010-product%20sample&body=Store%20link%3A%20">Get my free sample</a><a class="btn dark" style="background:transparent;border:1px solid rgba(255,255,255,.3)" href="mailto:michael@partpolish.com">michael@partpolish.com</a></div>
-  </div>
-</div>
+<section id="start" class="closing"><div class="wrap">
+  <h2>Want to see your own products cleaned up?</h2>
+  <p>Email your store link to <a href="mailto:michael@partpolish.com?subject=Free%2010-product%20sample&body=Store%20link%3A%20">michael@partpolish.com</a> and I'll send back 10 finished listings, free. Usually within two business days.</p>
+  <p class="who">Michael Patterson, PartPolish · Sugar Hill, Georgia</p>
+</div></section>
 
 <footer><div class="wrap">
   <div class="fgrid">
