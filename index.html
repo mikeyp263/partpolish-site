@@ -84,6 +84,11 @@ h2{font-size:clamp(2rem,3.8vw,2.9rem);line-height:1.08;letter-spacing:-.035em;fo
 .pcard.before h3{font:600 1.05rem "JetBrains Mono",monospace;color:#3d4955}
 .kv{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:.9rem}
 .kv span{color:var(--muted)}.kv b{font-weight:600}.kv b.miss{color:var(--red);font:600 .85rem "JetBrains Mono",monospace}
+.desc{color:var(--muted);font-size:.92rem;margin:0 0 12px}.desc.miss2{font:500 .85rem "JetBrains Mono",monospace;color:#a3adb7;font-style:italic}
+.specs2{display:grid;grid-template-columns:1fr 1fr;column-gap:22px}.specs2 .kv{font-size:.86rem;padding:7px 0}
+.scale{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:28px;border:1px solid var(--line);border-radius:20px;background:#fff}
+.scale div{padding:24px 26px;border-right:1px solid var(--line)}.scale div:last-child{border-right:0}
+.scale b{display:block;font-size:1.6rem;letter-spacing:-.03em;font-weight:800}.scale span{color:var(--muted);font-size:.92rem}
 .verdict{margin-top:16px;font-size:.88rem;font-weight:600}.verdict.bad{color:var(--red)}.verdict.good{color:var(--teal)}
 
 /* cards */
@@ -168,7 +173,7 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line)}
   section{padding:80px 0}
   .vs td,.vs th{padding:14px}
 }
-@media (max-width:560px){.four,.slide .grid2,.attrs{grid-template-columns:1fr}.navcta .btn.light{display:none}}
+@media (max-width:560px){.specs2{grid-template-columns:1fr}.scale{grid-template-columns:1fr}.scale div{border-right:0;border-bottom:1px solid var(--line)}.four,.slide .grid2,.attrs{grid-template-columns:1fr}.navcta .btn.light{display:none}}
 </style>
 </head>
 <body>
@@ -226,26 +231,28 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line)}
       <div class="body">
         <h3>V H.S.JOBBER DRILL BIT XGO</h3>
         <p class="ids">SKU VDR/CCTXGO</p>
-        <div class="kv"><span>Size</span><b class="miss">missing</b></div>
-        <div class="kv"><span>Overall length</span><b class="miss">missing</b></div>
-        <div class="kv"><span>Material</span><b class="miss">missing</b></div>
-        <div class="kv"><span>Point</span><b class="miss">missing</b></div>
-        <p class="verdict bad">Not found when a buyer searches "letter V drill bit."</p>
+        <p class="desc miss2">DESCRIPTION: none</p>
+        <div class="specs2"><div class="kv"><span>Brand</span><b class="miss">missing</b></div><div class="kv"><span>Mfr part #</span><b class="miss">missing</b></div><div class="kv"><span>Size</span><b class="miss">missing</b></div><div class="kv"><span>Decimal</span><b class="miss">missing</b></div><div class="kv"><span>Overall length</span><b class="miss">missing</b></div><div class="kv"><span>Flute length</span><b class="miss">missing</b></div><div class="kv"><span>Shank</span><b class="miss">missing</b></div><div class="kv"><span>Material</span><b class="miss">missing</b></div><div class="kv"><span>Finish</span><b class="miss">missing</b></div><div class="kv"><span>Point</span><b class="miss">missing</b></div><div class="kv"><span>Standard</span><b class="miss">missing</b></div><div class="kv"><span>Made in</span><b class="miss">missing</b></div><div class="kv"><span>Category</span><b class="miss">missing</b></div><div class="kv"><span>Sold as</span><b class="miss">missing</b></div></div>
+        <p class="verdict bad">Doesn't come up when a buyer searches "letter V drill bit," and gives them nothing to compare.</p>
       </div>
     </div>
     <div class="pcard">
       <div class="top">After PartPolish <span class="pill good">Quality 92%</span></div>
       <div class="img"><img src="img/champion-xgo-v.jpg" alt="Champion XGO letter V jobber drill bit"></div>
       <div class="body">
-        <h3>Letter V High-Speed Steel Jobber Drill Bit, 135° Split Point, Black &amp; Gold</h3>
-        <p class="ids">SKU <b>VDR/CCTXGO</b> · Mfr part # XGO-V</p>
-        <div class="kv"><span>Size</span><b>Letter V (0.377")</b></div>
-        <div class="kv"><span>Overall length</span><b>5"</b></div>
-        <div class="kv"><span>Material</span><b>High Speed Steel</b></div>
-        <div class="kv"><span>Point</span><b>135° Split Point</b></div>
-        <p class="verdict good">Shows up for size, material and point searches.</p>
+        <h3>Champion Letter V High-Speed Steel Jobber Drill Bit, 135° Split Point, Black &amp; Gold</h3>
+        <p class="ids">SKU <b>VDR/CCTXGO</b> · your SKU stays the same</p>
+        <p class="desc">Heavy-duty black and gold jobber drill in letter size V (0.377"), made in the USA from high speed steel. Self-centering 135° split point. 3-5/8" flute, 5" overall length, straight shank.</p>
+        <div class="specs2"><div class="kv"><span>Brand</span><b>Champion Cutting Tool</b></div><div class="kv"><span>Mfr part #</span><b>XGO-V</b></div><div class="kv"><span>Size</span><b>Letter V</b></div><div class="kv"><span>Decimal</span><b>0.377"</b></div><div class="kv"><span>Overall length</span><b>5"</b></div><div class="kv"><span>Flute length</span><b>3-5/8"</b></div><div class="kv"><span>Shank</span><b>Straight</b></div><div class="kv"><span>Material</span><b>High Speed Steel</b></div><div class="kv"><span>Finish</span><b>Black &amp; Gold</b></div><div class="kv"><span>Point</span><b>135° Split</b></div><div class="kv"><span>Standard</span><b>NAS 907 Type B</b></div><div class="kv"><span>Made in</span><b>USA</b></div><div class="kv"><span>Category</span><b>Drill Bits › Jobber</b></div><div class="kv"><span>Sold as</span><b>1 drill bit</b></div></div>
+        <p class="verdict good">Found by size, material, point and brand searches. Every value sourced from Champion's own catalog.</p>
       </div>
     </div>
+  </div>
+  <div class="scale">
+    <div><b>10 to 20 min</b><span>for one person to research and write one listing like this by hand (our estimate)</span></div>
+    <div><b>2,000 products</b><span>is hundreds of staff hours, pulled from sales and the counter</span></div>
+    <div><b>7 days</b><span>for us to deliver 500 of them, sourced and ready to import</span></div>
+  </div>
   </div>
 </div></section>
 
