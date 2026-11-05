@@ -3,361 +3,259 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PartPolish | Product data enrichment for tool distributors</title>
-<meta name="description" content="PartPolish turns supplier codes into complete, accurate product listings for tool and industrial supply distributors. Exact manufacturer part, clear names, photos and full specs, ready to import.">
+<title>PartPolish | Supplier codes in, finished product listings out</title>
+<meta name="description" content="PartPolish turns supplier codes into finished product listings for tool and industrial supply distributors: the exact manufacturer part, a clear name, the photo and every spec, ready to import.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0f2f2c;--teal:#1d6b62;--teal2:#2a8a7e;--mint:#e4f2ef;--mint2:#cfe8e2;--bg:#f4f6f8;--card:#fff;--muted:#5d6d77;--line:#e3e8ec;--red:#d14b42;--redbg:#fde9e7;--amber:#b7791f}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
-
-/* nav */
-nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.88);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;gap:28px;height:68px}
-.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
-.logo i{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--teal2),var(--ink));display:grid;place-items:center}
-.logo i:after{content:"";width:10px;height:10px;border:2.5px solid #fff;border-radius:3px;transform:rotate(45deg)}
-.links{display:flex;gap:26px;margin-left:12px;font-size:.93rem;color:var(--muted);font-weight:500}
-.links a:hover{color:var(--ink)}
-.navcta{margin-left:auto;display:flex;gap:10px;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;padding:12px 20px;border-radius:12px;transition:.15s}
-.btn.dark{background:var(--ink);color:#fff}.btn.dark:hover{background:var(--teal)}
-.btn.light{background:#fff;color:var(--ink);border:1px solid var(--line)}.btn.light:hover{border-color:var(--ink)}
-.btn.small{padding:9px 16px;font-size:.88rem}
-
-/* hero */
-.hero{background:radial-gradient(1200px 500px at 70% -10%,#e2f1ed 0,rgba(226,241,237,0) 60%),var(--bg);padding:84px 0 0;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:56px;align-items:center}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
-h1{font-size:clamp(2.5rem,5.2vw,4rem);line-height:1.02;letter-spacing:-.045em;font-weight:800;margin:16px 0 20px}
-h1 em{font-style:normal;color:var(--teal)}
-.lede{font-size:1.15rem;color:var(--muted);margin:0 0 30px;max-width:540px}
-.ctas{display:flex;gap:12px;flex-wrap:wrap}
-.aud{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
-.aud span{font-size:.82rem;font-weight:600;color:var(--teal);background:#fff;border:1px solid var(--mint2);padding:6px 12px;border-radius:99px}
-.flow{display:flex;gap:0;margin:64px 0 0;border-top:1px solid var(--line)}
-.flow div{flex:1;padding:18px 0;border-right:1px solid var(--line);text-align:center;font-size:.86rem;color:var(--muted)}
-.flow div:last-child{border-right:0}
-.flow b{display:block;color:var(--ink);font-size:.95rem}
-.flow b:before{content:attr(data-n);font:600 .72rem "JetBrains Mono",monospace;color:var(--teal);margin-right:8px}
-
-/* mock */
-.mock{background:#fff;border-radius:22px;box-shadow:0 1px 2px rgba(15,47,44,.06),0 40px 80px -40px rgba(15,47,44,.45);padding:22px;position:relative}
-.mock .bar{display:flex;gap:6px;margin-bottom:16px}.mock .bar i{width:10px;height:10px;border-radius:50%;background:#e3e8ec}
-.mrow{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.82rem;color:var(--muted);margin:0 0 8px}
-.csv{font:500 .86rem "JetBrains Mono",monospace;background:#f6f8fa;border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:#7a2f1c;margin-bottom:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.src{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.src span{font-size:.75rem;background:var(--mint);color:var(--teal);padding:4px 10px;border-radius:99px;font-weight:600}
-.attrs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.attr{display:flex;justify-content:space-between;gap:8px;font-size:.84rem;padding:9px 11px;border:1px solid var(--line);border-radius:10px}
-.attr span{color:var(--muted)}.attr b{font-weight:600}
-.attr.done{border-color:var(--mint2);background:#f4fbf9}
-.score{position:absolute;right:-18px;top:44px;background:#fff;border-radius:16px;box-shadow:0 18px 40px -18px rgba(15,47,44,.45);padding:14px 16px;min-width:150px}
-.score small{display:block;color:var(--muted);font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
-.score b{font-size:1.6rem;letter-spacing:-.03em}
-.meter{height:6px;border-radius:99px;background:var(--line);margin-top:6px;overflow:hidden}.meter i{display:block;height:100%;width:92%;background:linear-gradient(90deg,var(--teal2),var(--teal))}
-
-/* sections */
-section{padding:110px 0}
-.alt{background:var(--bg)}
-.head{max-width:720px;margin:0 0 48px}
-.head.center{margin:0 auto 48px;text-align:center}.head.center .eyebrow{justify-content:center}
-h2{font-size:clamp(2rem,3.8vw,2.9rem);line-height:1.08;letter-spacing:-.035em;font-weight:800;margin:14px 0 14px}
-.head p{color:var(--muted);font-size:1.08rem;margin:0}
-
-/* compare */
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.pcard{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
-.pcard .top{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.pill{font-size:.78rem;font-weight:700;padding:4px 11px;border-radius:99px;letter-spacing:0;text-transform:none}
-.pill.bad{background:var(--redbg);color:var(--red)}.pill.good{background:var(--teal);color:#fff}
-.pcard .img{height:260px;display:grid;place-items:center;background:linear-gradient(180deg,#f3f6f9,#e9eef3);padding:20px}
-.pcard .img img,.slide .pic img{max-width:100%;max-height:220px;width:auto;height:auto;object-fit:contain;mix-blend-mode:multiply}
-.slide .pic img{max-height:330px}
-.pcard .body{padding:22px 24px 26px}
-.pcard h3{margin:0 0 6px;font-size:1.2rem;letter-spacing:-.02em;line-height:1.25}
-.pcard .ids{font-size:.84rem;color:var(--muted);margin:0 0 14px}.pcard .ids b{color:var(--teal)}
-.pcard.before h3{font:600 1.05rem "JetBrains Mono",monospace;color:#3d4955}
-.kv{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:.9rem}
-.kv span{color:var(--muted)}.kv b{font-weight:600}.kv b.miss{color:var(--red);font:600 .85rem "JetBrains Mono",monospace}
-.desc{color:var(--muted);font-size:.92rem;margin:0 0 12px}.desc.miss2{font:500 .85rem "JetBrains Mono",monospace;color:#a3adb7;font-style:italic}
-.specs2{display:grid;grid-template-columns:1fr 1fr;column-gap:22px}.specs2 .kv{font-size:.86rem;padding:7px 0}
-.scale{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:28px;border:1px solid var(--line);border-radius:20px;background:#fff}
-.scale div{padding:24px 26px;border-right:1px solid var(--line)}.scale div:last-child{border-right:0}
-.scale b{display:block;font-size:1.6rem;letter-spacing:-.03em;font-weight:800}.scale span{color:var(--muted);font-size:.92rem}
-.verdict{margin-top:16px;font-size:.88rem;font-weight:600}.verdict.bad{color:var(--red)}.verdict.good{color:var(--teal)}
-
-/* cards */
-.three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.four{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px}
-.alt .card{border-color:transparent;box-shadow:0 1px 2px rgba(15,47,44,.05)}
-.icon{width:42px;height:42px;border-radius:12px;background:var(--mint);display:grid;place-items:center;margin-bottom:18px;color:var(--teal)}
-.card h3{margin:0 0 8px;font-size:1.12rem;letter-spacing:-.015em}
-.card p{margin:0;color:var(--muted);font-size:.95rem}
-.ex{margin-top:18px;font-size:.82rem;border-top:1px dashed var(--line);padding-top:14px}
-.ex div{display:flex;justify-content:space-between;gap:10px;padding:3px 0}
-.ex s{color:var(--red);text-decoration:none;font-family:"JetBrains Mono",monospace}.ex u{color:var(--teal);text-decoration:none;font-weight:600}
-
-/* slider */
-.slider{position:relative;margin-top:28px;border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 1px 2px rgba(15,47,44,.06),0 30px 60px -36px rgba(15,47,44,.4);--pos:50%;user-select:none}
-.slider{--pos:40%}
-.slide{display:grid;grid-template-columns:40% 60%;min-height:400px}
-.slide .pic{display:grid;place-items:center;background:linear-gradient(180deg,#f1f5f8,#e8edf2);padding:30px}
-.slide .txt{padding:36px 40px}
-.slide.b{position:absolute;inset:0;background:#f3f5f8;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
-.slide .tag{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.12em;padding:5px 11px;border-radius:99px;margin-bottom:14px}
-.slide.a .tag{background:var(--ink);color:#fff}.slide.b .tag{background:#5b6675;color:#fff}
-.slide h3{font-size:1.5rem;letter-spacing:-.025em;line-height:1.2;margin:0 0 6px}
-.slide.b h3{font:600 1.15rem "JetBrains Mono",monospace;color:#3d4955}
-.slide .grid2{display:grid;grid-template-columns:1fr 1fr;column-gap:28px;margin-top:14px}
-.handle{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;background:#fff;box-shadow:0 0 0 1px rgba(15,47,44,.1);pointer-events:none}
-.handle:after{content:"‹ ›";position:absolute;top:50%;left:-22px;width:44px;height:44px;margin-top:-22px;border-radius:50%;background:#fff;box-shadow:0 8px 20px rgba(15,47,44,.25);display:grid;place-items:center;font-weight:800;color:var(--ink)}
-.slider input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
-.hint{color:var(--muted);font-size:.85rem;text-align:center;margin-top:14px}
-
-/* table */
-.vs{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}
-.vs th,.vs td{padding:18px 22px;text-align:left;border-bottom:1px solid var(--line);font-size:.95rem;vertical-align:top}
-.vs tr:last-child td{border-bottom:0}
-.vs th{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:#fafbfc}
-.vs th.us{color:var(--teal)}
-.vs td:first-child{font-weight:600;width:22%}
-.vs td.us{background:#f6fbf9;color:var(--ink);font-weight:500}
-.vs td:nth-child(2){color:var(--muted)}
-
-/* pricing */
-.price .card{display:flex;flex-direction:column}
-.price .tier{font-size:.85rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
-.price .amt{font-size:2.6rem;font-weight:800;letter-spacing:-.04em;margin:10px 0 4px}
-.price .amt small{font-size:1rem;color:var(--muted);font-weight:500;letter-spacing:0}
-.price ul{list-style:none;padding:0;margin:18px 0 26px;flex:1}.price li{padding:7px 0;border-top:1px solid var(--line);font-size:.93rem;display:flex;gap:10px}
-.price li:before{content:"✓";color:var(--teal);font-weight:800}
-.price .card.hot{border:2px solid var(--teal);position:relative}
-.price .btn{justify-content:center}
-
-/* faq */
-.faq{max-width:820px;margin:0 auto}
-details{border-bottom:1px solid var(--line);padding:6px 0}
-summary{cursor:pointer;list-style:none;font-weight:600;font-size:1.05rem;padding:16px 36px 16px 0;position:relative}
-summary::-webkit-details-marker{display:none}
-summary:after{content:"+";position:absolute;right:4px;top:12px;font-size:1.5rem;color:var(--teal);font-weight:400}
-details[open] summary:after{content:"–"}
-details p{margin:0 0 18px;color:var(--muted)}
-
-/* closing + footer */
-.closing{border-top:1px solid var(--line);padding:90px 0}
-.closing h2{margin:0 0 14px}.closing p{font-size:1.1rem;color:var(--muted);max-width:640px;margin:0 0 10px}
-.closing a{color:var(--teal);font-weight:600;border-bottom:1px solid var(--mint2)}
-.closing .who{font-size:.95rem;color:var(--ink);margin-top:20px}
-footer{padding:56px 0 40px;border-top:1px solid var(--line)}
-.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}
-.fgrid p{color:var(--muted);font-size:.92rem;max-width:320px}
-.fgrid h4{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:6px 0 14px}
-.fgrid a{display:block;font-size:.93rem;margin:8px 0}.fgrid a.logo{display:flex;font-size:1.15rem;margin:0}.fgrid a:hover{color:var(--teal)}
-.legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line);margin-top:44px;padding-top:22px;color:var(--muted);font-size:.85rem}
-
-@media (max-width:960px){
-  .links{display:none}
-  .hero-grid,.compare{grid-template-columns:1fr}
-  .score{right:12px;top:-20px}
-  .three{grid-template-columns:1fr}
-  .four{grid-template-columns:1fr 1fr}
-  .flow{flex-wrap:wrap}.flow div{flex:1 1 50%;border-bottom:1px solid var(--line)}
-  .slide{grid-template-columns:1fr}.slide .pic{min-height:200px}.slide .txt{padding:24px}
-  .fgrid{grid-template-columns:1fr 1fr}
-  section{padding:80px 0}
-  .vs td,.vs th{padding:14px}
+:root{
+  --paper:#f7f6f2; --white:#fff; --graphite:#17191b; --steel:#5b636b; --rule:#dcdad3;
+  --brass:#b8862b; --brass-deep:#8a6114; --brass-wash:#f3ead6; --raw:#8c3a1c;
+  --measure:68ch;
 }
-@media (max-width:560px){.specs2{grid-template-columns:1fr}.scale{grid-template-columns:1fr}.scale div{border-right:0;border-bottom:1px solid var(--line)}.four,.slide .grid2,.attrs{grid-template-columns:1fr}.navcta .btn.light{display:none}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scrollbar-color:#b9b6ad var(--paper)}
+::selection{background:var(--brass-wash);color:var(--graphite)}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:2px}
+body{margin:0;background:var(--paper);color:var(--graphite);font:17px/1.6 "Source Serif 4",Georgia,serif;-webkit-font-smoothing:antialiased;caret-color:var(--brass)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3,nav,.btn,label,th,summary{font-family:Archivo,system-ui,sans-serif}
+.code{font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:500}
+
+header.top{border-bottom:1px solid var(--rule)}
+header.top .wrap{display:flex;align-items:center;gap:32px;height:72px}
+.word{font:800 1.3rem/1 Archivo,sans-serif;font-stretch:112%;letter-spacing:-.01em;text-decoration:none}
+.word span{color:var(--brass)}
+nav{display:flex;gap:26px;font-size:.95rem;margin-left:auto}
+nav a{text-decoration:none;color:var(--steel)}nav a:hover{color:var(--graphite)}
+
+.hero{padding-top:72px}
+h1{font-weight:800;font-stretch:118%;font-size:clamp(2.6rem,6.2vw,5.2rem);line-height:.98;letter-spacing:-.025em;margin:0;max-width:15ch}
+h1 .code{display:inline-block;font-stretch:normal;font-size:.62em;letter-spacing:0;color:var(--raw);background:var(--white);border:1px solid var(--rule);padding:.08em .3em;transform:translateY(-.12em)}
+.lede{font-size:1.25rem;max-width:44ch;margin:26px 0 30px;color:#33383c}
+
+form.ask{display:flex;gap:10px;max-width:560px;flex-wrap:wrap}
+form.ask label{position:absolute;left:-9999px}
+form.ask input{flex:1 1 280px;font:500 1rem Archivo,sans-serif;padding:15px 16px;border:1.5px solid var(--graphite);border-radius:6px;background:var(--white);color:var(--graphite)}
+form.ask input::placeholder{color:#7d8287}
+.btn{font-weight:700;font-size:1rem;padding:15px 22px;border-radius:6px;border:1.5px solid var(--graphite);background:var(--graphite);color:#fff;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s,border-color .2s}
+.btn:hover{background:var(--brass-deep);border-color:var(--brass-deep)}
+.small{font:400 .9rem Archivo,sans-serif;color:var(--steel);margin:12px 0 0}
+.small.err{color:var(--raw)}
+
+.sheet{margin:64px 0 0;background:var(--white);border:1px solid var(--rule);border-radius:14px;box-shadow:0 30px 60px -40px rgba(23,25,27,.45);overflow:hidden}
+.rawline{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;padding:16px 28px;border-bottom:1px solid var(--rule);background:#fbfaf7;font-size:.9rem}
+.rawline .code{color:var(--raw)}
+.rawline .tag{font:600 .82rem Archivo,sans-serif;color:var(--steel)}
+.rawline .tag b{color:var(--graphite)}
+.listing{display:grid;grid-template-columns:44% 56%}
+.photo{display:grid;place-items:center;padding:36px;background:radial-gradient(120% 90% at 50% 40%,#fff 0,#eeede8 100%)}
+.photo img{max-width:100%;height:auto;max-height:380px;mix-blend-mode:multiply}
+.facts{padding:34px 40px 38px}
+.facts h3{font-weight:750;font-stretch:104%;font-size:1.65rem;line-height:1.15;letter-spacing:-.015em;margin:0 0 10px}
+.ids{display:flex;flex-wrap:wrap;gap:6px 22px;font:500 .88rem Archivo,sans-serif;color:var(--steel);margin:0 0 16px}
+.ids b{color:var(--graphite);font-weight:650}.ids b.sku{color:var(--brass-deep)}
+.facts p{margin:0 0 18px;color:#33383c}
+table.data{width:100%;border-collapse:collapse;font-size:.92rem;font-variant-numeric:tabular-nums}
+table.data th{text-align:left;font-weight:500;color:var(--steel);padding:8px 14px 8px 0;border-top:1px solid var(--rule);width:40%}
+table.data td{padding:8px 0;border-top:1px solid var(--rule);font-weight:600;font-family:Archivo,sans-serif}
+@media (prefers-reduced-motion:no-preference){
+  .listing{animation:resolve 1.1s cubic-bezier(.16,1,.3,1) .35s both}
+  @keyframes resolve{from{clip-path:inset(0 0 100% 0);filter:blur(6px)}to{clip-path:inset(0 0 0 0);filter:blur(0)}}
+}
+
+section{padding:104px 0 0}
+h2{font-weight:800;font-stretch:112%;font-size:clamp(2rem,3.8vw,3rem);line-height:1.04;letter-spacing:-.02em;margin:0 0 18px;max-width:20ch}
+.prose{max-width:var(--measure);font-size:1.12rem}
+.prose p{margin:0 0 16px}
+
+.split{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
+.anatomy{list-style:none;margin:0;padding:0;border-top:1px solid var(--graphite)}
+.anatomy li{display:grid;grid-template-columns:200px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--rule)}
+.anatomy b{font:700 1rem Archivo,sans-serif}
+.anatomy span{color:#33383c}
+.anatomy .was{display:block;margin-top:4px;font-size:.82rem;color:var(--raw)}
+
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;max-width:820px}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:72px 1fr;padding:22px 0;border-top:1px solid var(--rule)}
+ol.steps li:last-child{border-bottom:1px solid var(--rule)}
+ol.steps li:before{content:counter(s);font:800 2.2rem/1 Archivo,sans-serif;font-stretch:118%;color:var(--brass-deep)}
+ol.steps b{display:block;font:700 1.12rem Archivo,sans-serif;margin-bottom:2px}
+
+.promise{background:var(--graphite);color:#ecebe6;margin-top:104px;padding:96px 0}
+.promise h2{color:#fff;max-width:18ch}
+.promise .prose{color:#d6d4cd}
+.promise dl{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:44px 0 0;border-top:1px solid #3a3d40}
+.promise dt{font:700 1.05rem Archivo,sans-serif;color:#fff;padding-top:20px}
+.promise dd{margin:6px 32px 0 0;color:#c9c7c0;font-size:1rem}
+.promise ::selection{background:#4a3a18;color:#fff}
+
+table.price{width:100%;max-width:900px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+table.price th,table.price td{text-align:left;padding:20px 18px 20px 0;border-top:1px solid var(--rule);vertical-align:top}
+table.price tr:first-child th,table.price tr:first-child td{border-top:1px solid var(--graphite)}
+table.price th{font-weight:700;font-size:1.1rem;width:22%}
+table.price td{color:#33383c}
+table.price td.amt{font:800 1.5rem Archivo,sans-serif;font-stretch:110%;color:var(--graphite);white-space:nowrap;width:18%}
+
+.faq{max-width:820px}
+details{border-top:1px solid var(--rule)}
+details:last-child{border-bottom:1px solid var(--rule)}
+summary{cursor:pointer;list-style:none;font-weight:650;font-size:1.08rem;padding:20px 40px 20px 0;position:relative}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"";position:absolute;right:6px;top:26px;width:9px;height:9px;border-right:2px solid var(--brass-deep);border-bottom:2px solid var(--brass-deep);transform:rotate(45deg);transition:transform .25s cubic-bezier(.16,1,.3,1)}
+details[open] summary:after{transform:rotate(225deg);top:30px}
+details p{margin:0 0 22px;max-width:var(--measure);color:#33383c}
+
+.closing{padding:110px 0 100px}
+.closing h2{max-width:22ch}
+.sign{font:500 .95rem Archivo,sans-serif;color:var(--steel);margin-top:28px}
+
+footer{border-top:1px solid var(--rule)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;padding-bottom:40px;font:400 .88rem Archivo,sans-serif;color:var(--steel)}
+
+@media (max-width:900px){
+  nav{display:none}
+  .listing,.split{grid-template-columns:1fr}
+  .split{gap:32px}
+  .facts{padding:26px 22px}
+  .anatomy li{grid-template-columns:1fr;gap:4px}
+  .promise dl{grid-template-columns:1fr}
+  .promise dd{margin-right:0;padding-bottom:16px}
+  table.price tr{display:block;border-top:1px solid var(--rule);padding:14px 0}
+  table.price tr:first-child{border-top:1px solid var(--graphite)}
+  table.price th,table.price td{display:block;width:auto;padding:4px 0;border:0!important}
+}
 </style>
 </head>
 <body>
 
-
-<nav><div class="wrap">
-  <a class="logo" href="#"><i></i>PartPolish</a>
-  <div class="links"><a href="#how">How it works</a><a href="#accuracy">Accuracy</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
-  <div class="navcta"><a class="btn light small" href="mailto:michael@partpolish.com">Contact</a><a class="btn dark small" href="#start">Get a free sample</a></div>
-</div></nav>
-
-<header class="hero"><div class="wrap">
-  <div class="hero-grid">
-    <div>
-      <span class="eyebrow">Product data for tool distributors</span>
-      <h1>Turn supplier codes into listings that <em>actually sell.</em></h1>
-      <p class="lede">PartPolish matches every product in your catalog to the exact manufacturer part, then fills in the name, photo and full specs. You get a file your store imports in one step. Nothing is guessed.</p>
-      <div class="ctas"><a class="btn dark" href="#start">Get 10 products done free</a><a class="btn light" href="#example">See an example</a></div>
-      <div class="aud"><span>Tool distributors</span><span>Industrial supply</span><span>Cutting tools</span><span>Fasteners</span></div>
-    </div>
-    <div class="mock" aria-hidden="true">
-      <div class="bar"><i></i><i></i><i></i></div>
-      <div class="mrow"><span>Supplier file · row 1 of 1,250</span><span class="mono">VDR/CCTXGO</span></div>
-      <div class="csv">V H.S.JOBBER DRILL BIT XGO,EA,,,</div>
-      <div class="mrow"><span>Sources checked</span></div>
-      <div class="src"><span>Manufacturer page</span><span>Spec sheet PDF</span><span>Catalog p. 48</span></div>
-      <div class="mrow"><span>Attributes</span><span><b style="color:var(--teal)">8 / 8</b> filled</span></div>
-      <div class="attrs">
-        <div class="attr done"><span>Size</span><b>Letter V</b></div>
-        <div class="attr done"><span>Decimal</span><b>0.377"</b></div>
-        <div class="attr done"><span>Overall length</span><b>5"</b></div>
-        <div class="attr done"><span>Flute length</span><b>3-5/8"</b></div>
-        <div class="attr done"><span>Material</span><b>HSS</b></div>
-        <div class="attr done"><span>Point</span><b>135° split</b></div>
-        <div class="attr done"><span>Shank</span><b>Straight</b></div>
-        <div class="attr done"><span>Finish</span><b>Black &amp; gold</b></div>
-      </div>
-      <div class="score"><small>Listing quality</small><b>92%</b><div class="meter"><i></i></div></div>
-    </div>
-  </div>
-  <div class="flow">
-    <div><b data-n="01">Intake</b>Spreadsheet or store link</div>
-    <div><b data-n="02">Match</b>Exact manufacturer part</div>
-    <div><b data-n="03">Enrich</b>Name, photo, specs</div>
-    <div><b data-n="04">Import</b>One file, ready to publish</div>
-  </div>
+<header class="top"><div class="wrap">
+  <a class="word" href="#">Part<span>Polish</span></a>
+  <nav aria-label="Main"><a href="#what">What you get</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">Questions</a></nav>
 </div></header>
 
-<section id="example"><div class="wrap">
-  <div class="head center"><span class="eyebrow">Get found, not skipped</span><h2>Same drill bit. One gets bought.</h2><p>Contractors search by size and spec. A listing named after a supplier code, with no photo and no specs, doesn't come up, and doesn't earn the order when it does.</p></div>
-  <div class="compare">
-    <div class="pcard before">
-      <div class="top">Listing today <span class="pill bad">Quality 15%</span></div>
-      <div class="img"><svg width="70" height="70" viewBox="0 0 48 48" fill="none" stroke="#a3adb7" stroke-width="2.4" stroke-linecap="round"><rect x="7" y="9" width="34" height="30" rx="3"/><circle cx="18" cy="19" r="3.2"/><path d="M9 35l10-10 7 7 5-5 8 8M5 5l38 38"/></svg></div>
-      <div class="body">
-        <h3>V H.S.JOBBER DRILL BIT XGO</h3>
-        <p class="ids">SKU VDR/CCTXGO</p>
-        <p class="desc miss2">DESCRIPTION: none</p>
-        <div class="specs2"><div class="kv"><span>Brand</span><b class="miss">missing</b></div><div class="kv"><span>Mfr part #</span><b class="miss">missing</b></div><div class="kv"><span>Size</span><b class="miss">missing</b></div><div class="kv"><span>Decimal</span><b class="miss">missing</b></div><div class="kv"><span>Overall length</span><b class="miss">missing</b></div><div class="kv"><span>Flute length</span><b class="miss">missing</b></div><div class="kv"><span>Shank</span><b class="miss">missing</b></div><div class="kv"><span>Material</span><b class="miss">missing</b></div><div class="kv"><span>Finish</span><b class="miss">missing</b></div><div class="kv"><span>Point</span><b class="miss">missing</b></div><div class="kv"><span>Standard</span><b class="miss">missing</b></div><div class="kv"><span>Made in</span><b class="miss">missing</b></div><div class="kv"><span>Category</span><b class="miss">missing</b></div><div class="kv"><span>Sold as</span><b class="miss">missing</b></div></div>
-        <p class="verdict bad">Doesn't come up when a buyer searches "letter V drill bit," and gives them nothing to compare.</p>
-      </div>
-    </div>
-    <div class="pcard">
-      <div class="top">After PartPolish <span class="pill good">Quality 92%</span></div>
-      <div class="img"><img src="img/champion-xgo-v.jpg" alt="Champion XGO letter V jobber drill bit"></div>
-      <div class="body">
-        <h3>Champion Letter V High-Speed Steel Jobber Drill Bit, 135° Split Point, Black &amp; Gold</h3>
-        <p class="ids">SKU <b>VDR/CCTXGO</b> · your SKU stays the same</p>
-        <p class="desc">Heavy-duty black and gold jobber drill in letter size V (0.377"), made in the USA from high speed steel. Self-centering 135° split point. 3-5/8" flute, 5" overall length, straight shank.</p>
-        <div class="specs2"><div class="kv"><span>Brand</span><b>Champion Cutting Tool</b></div><div class="kv"><span>Mfr part #</span><b>XGO-V</b></div><div class="kv"><span>Size</span><b>Letter V</b></div><div class="kv"><span>Decimal</span><b>0.377"</b></div><div class="kv"><span>Overall length</span><b>5"</b></div><div class="kv"><span>Flute length</span><b>3-5/8"</b></div><div class="kv"><span>Shank</span><b>Straight</b></div><div class="kv"><span>Material</span><b>High Speed Steel</b></div><div class="kv"><span>Finish</span><b>Black &amp; Gold</b></div><div class="kv"><span>Point</span><b>135° Split</b></div><div class="kv"><span>Standard</span><b>NAS 907 Type B</b></div><div class="kv"><span>Made in</span><b>USA</b></div><div class="kv"><span>Category</span><b>Drill Bits › Jobber</b></div><div class="kv"><span>Sold as</span><b>1 drill bit</b></div></div>
-        <p class="verdict good">Found by size, material, point and brand searches. Every value sourced from Champion's own catalog.</p>
-      </div>
-    </div>
-  </div>
-  <div class="scale">
-    <div><b>10 to 20 min</b><span>for one person to research and write one listing like this by hand (our estimate)</span></div>
-    <div><b>2,000 products</b><span>is hundreds of staff hours, pulled from sales and the counter</span></div>
-    <div><b>7 days</b><span>for us to deliver 500 of them, sourced and ready to import</span></div>
-  </div>
-  </div>
-</div></section>
+<main>
+<div class="wrap hero">
+  <h1>Your customers search “letter V drill bit.” Your store says <span class="code">VDR/CCTXGO</span></h1>
+  <p class="lede">We turn supplier codes into finished product listings: the exact manufacturer part, a clear name, the photo and every spec. You import one file. Your SKUs stay the same.</p>
 
-<section class="alt"><div class="wrap">
-  <div class="head"><span class="eyebrow">What we do</span><h2>Product data that wins the order.</h2><p>Three things make a listing sell. Most distributor catalogs are missing all three.</p></div>
-  <div class="three">
-    <div class="card"><h3>Complete</h3><p>Every attribute a buyer filters on: size, lengths, shank, material, point, finish, pack quantity.</p>
-      <div class="ex"><div><span>Before</span><s>2 of 9 filled</s></div><div><span>After</span><u>9 of 9 filled</u></div></div></div>
-    <div class="card"><h3>Correct</h3><p>Matched to the exact manufacturer part number. Every spec comes from the manufacturer's own data.</p>
-      <div class="ex"><div><span>Before</span><s>5/32 TITANIUM DRILL</s></div><div><span>After</span><u>Milwaukee 48-89-4607</u></div></div></div>
-    <div class="card"><h3>Consistent</h3><p>Same title format, same spec order, same units across your whole catalog, so filters and search just work.</p>
-      <div class="ex"><div><span>Before</span><s>135DEG · 135 Degree</s></div><div><span>After</span><u>135°</u></div></div></div>
+  <form class="ask" data-ask novalidate>
+    <label for="store1">Your store's web address</label>
+    <input id="store1" name="store" type="url" inputmode="url" autocomplete="url" placeholder="yourstore.com" required>
+    <button class="btn" type="submit">Clean up 10 listings free</button>
+  </form>
+  <p class="small" data-msg>We'll email you 10 of your own listings, finished. No call needed.</p>
+
+  <div class="sheet" aria-label="Example: one listing before and after">
+    <div class="rawline">
+      <span class="tag">Supplier code</span>
+      <span class="code">VDR/CCTXGO &nbsp;V H.S.JOBBER DRILL BIT XGO</span>
+      <span class="tag" style="margin-left:auto">Before: <b>no photo, no specs, no brand</b></span>
+    </div>
+    <div class="listing">
+      <div class="photo"><img src="img/champion-xgo-v.jpg" alt="Champion XGO letter V jobber drill bit, black and gold finish" width="1000" height="1000"></div>
+      <div class="facts">
+        <h3>Champion Letter V High-Speed Steel Jobber Drill Bit, 135° Split Point, Black &amp; Gold</h3>
+        <div class="ids"><span>SKU <b class="sku">VDR/CCTXGO</b></span><span>Brand <b>Champion Cutting Tool</b></span><span>Mfr part <b>XGO-V</b></span><span>Sold as <b>1 drill bit</b></span></div>
+        <p>Heavy-duty jobber drill in letter size V, made in the USA from high speed steel with a black and gold finish and a self-centering 135° split point.</p>
+        <table class="data">
+          <tr><th>Size</th><td>Letter V (0.377")</td></tr>
+          <tr><th>Overall length</th><td>5"</td></tr>
+          <tr><th>Flute length</th><td>3-5/8"</td></tr>
+          <tr><th>Shank</th><td>Straight</td></tr>
+          <tr><th>Material</th><td>High speed steel</td></tr>
+          <tr><th>Point</th><td>135° split</td></tr>
+          <tr><th>Standard</th><td>NAS 907 Type B</td></tr>
+          <tr><th>Category</th><td>Drill Bits › Jobber Length</td></tr>
+        </table>
+      </div>
+    </div>
   </div>
+</div>
+
+<section id="what"><div class="wrap split">
+  <div>
+    <h2>Everything a buyer checks before they order.</h2>
+    <div class="prose"><p>A contractor looking at a listing wants to know three things fast: is this the exact part, will it fit, and how many do I get. Supplier codes answer none of them.</p></div>
+  </div>
+  <ul class="anatomy">
+    <li><b>A name people search for</b><span>Brand, size and type first, written the way buyers type it.<span class="was code">was: V H.S.JOBBER DRILL BIT XGO</span></span></li>
+    <li><b>The exact part</b><span>Every item matched to its manufacturer and part number, so there's no guessing which drill it is.</span></li>
+    <li><b>Every spec, in order</b><span>Size, lengths, shank, material, point and finish, in the same order on every product, so your filters actually work.</span></li>
+    <li><b>The real photo</b><span>The manufacturer's product photo, matched to the part, plus the image files for your records.</span></li>
+    <li><b>Problems we find along the way</b><span>Like the same drill listed under two SKUs, or a category that hides half your taps.</span></li>
+  </ul>
 </div></section>
 
 <section id="how"><div class="wrap">
-  <div class="head"><span class="eyebrow">How it works</span><h2>Send what you have. Get back finished listings.</h2><p>No software to install and no calls required. We work from whatever you've got.</p></div>
-  <div class="four">
-    <div class="card"><h3>Spreadsheets</h3><p>Your ERP or store export, with whatever columns it has.</p></div>
-    <div class="card"><h3>Your store</h3><p>Just send the link. We read your current listings directly.</p></div>
-    <div class="card"><h3>Supplier files</h3><p>Price files, line cards and spec sheet PDFs.</p></div>
-    <div class="card"><h3>Manufacturer data</h3><p>We find the official product page and catalog for every part.</p></div>
-  </div>
-  <div class="slider" id="slider">
-    <div class="slide a">
-      <div class="pic"><img src="img/milwaukee-48-89-4607.jpg" alt="Milwaukee 5/32 inch titanium impact drill bit"></div>
-      <div class="txt"><span class="tag">AFTER</span><h3>Milwaukee 5/32" Titanium-Coated Impact Drill Bit, 1/4" Hex Shank</h3>
-        <p class="ids" style="color:var(--muted);font-size:.86rem;margin:0">SKU <b style="color:var(--teal)">MIL48-89-4607</b> · Mfr part # 48-89-4607 · Sold as 1 bit</p>
-        <div class="grid2"><div class="kv"><span>Size</span><b>5/32"</b></div><div class="kv"><span>Shank</span><b>1/4" hex</b></div><div class="kv"><span>Finish</span><b>Titanium</b></div><div class="kv"><span>Point</span><b>135° split</b></div><div class="kv"><span>Overall length</span><b>2.75"</b></div><div class="kv"><span>Category</span><b>Drill bits</b></div></div></div>
-    </div>
-    <div class="slide b">
-      <div class="pic"><svg width="70" height="70" viewBox="0 0 48 48" fill="none" stroke="#a3adb7" stroke-width="2.4" stroke-linecap="round"><rect x="7" y="9" width="34" height="30" rx="3"/><circle cx="18" cy="19" r="3.2"/><path d="M9 35l10-10 7 7 5-5 8 8M5 5l38 38"/></svg></div>
-      <div class="txt"><span class="tag">BEFORE</span><h3>5/32 TITANIUM DRILL HEX BIT</h3>
-        <p style="color:var(--muted);font:500 .86rem 'JetBrains Mono',monospace;margin:0">SKU MIL48-89-4607 · DESCRIPTION: none</p>
-        <div class="grid2"><div class="kv"><span>Size</span><b class="miss">missing</b></div><div class="kv"><span>Shank</span><b class="miss">missing</b></div><div class="kv"><span>Finish</span><b class="miss">missing</b></div><div class="kv"><span>Point</span><b class="miss">missing</b></div><div class="kv"><span>Overall length</span><b class="miss">missing</b></div><div class="kv"><span>Category</span><b class="miss">missing</b></div></div></div>
-    </div>
-    <div class="handle"></div>
-    <input type="range" min="0" max="100" value="40" aria-label="Drag to compare before and after">
-  </div>
-  <p class="hint">Drag to compare</p>
+  <h2>Send what you have. Get back finished listings.</h2>
+  <ol class="steps">
+    <li><div><b>Send your store link or a spreadsheet</b><span>An export from your store or ERP works, whatever columns it has. Supplier files help but aren't required.</span></div></li>
+    <li><div><b>We match and fill in every product</b><span>Each item is tied to its manufacturer part number, then the name, photo and specs come from the manufacturer's own pages and spec sheets.</span></div></li>
+    <li><div><b>You import one file</b><span>Ready for Shopify, or a clean spreadsheet for BigCommerce, WooCommerce and most ERPs. Updated listings replace the old ones under the same SKUs.</span></div></li>
+  </ol>
 </div></section>
 
-<section class="alt" id="accuracy"><div class="wrap">
-  <div class="head"><span class="eyebrow">Trust &amp; accuracy</span><h2>Wrong specs are worse than missing ones.</h2><p>A wrong thread size or length means a return and a lost customer. So accuracy comes first, every time.</p></div>
-  <div class="three">
-    <div class="card"><h3>Every value is sourced</h3><p>Each spec is tied to the manufacturer page or spec sheet it came from, and checked against it.</p></div>
-    <div class="card"><h3>Unsure means flagged</h3><p>If a value can't be confirmed, it's held for review and never filled in with a guess.</p></div>
-    <div class="card"><h3>Your SKUs stay yours</h3><p>We never change your SKUs or pricing. Updated listings import right over the old ones.</p></div>
-  </div>
-</div></section>
+<div class="promise" id="accuracy"><div class="wrap">
+  <h2>A wrong spec is worse than a missing one.</h2>
+  <div class="prose"><p>A wrong length or shank size means a return and a customer who doesn't come back. So every value we add has to come from the manufacturer, and anything we can't confirm is left blank and flagged for you.</p></div>
+  <dl>
+    <div><dt>Every value is sourced</dt><dd>Each spec is tied to the manufacturer page or spec sheet it came from.</dd></div>
+    <div><dt>Unsure means flagged</dt><dd>If a source doesn't confirm it, it's held for your review. Never guessed.</dd></div>
+    <div><dt>Your SKUs stay yours</dt><dd>We don't touch SKUs or pricing. Only the listing content changes.</dd></div>
+  </dl>
+</div></div>
 
-<section><div class="wrap">
-  <div class="head center"><span class="eyebrow">The alternative</span><h2>Do it by hand, or send it to us.</h2></div>
-  <table class="vs">
-    <thead><tr><th></th><th>Doing it in-house</th><th class="us">PartPolish</th></tr></thead>
-    <tbody>
-      <tr><td>Speed</td><td>Someone researches one product at a time between other jobs</td><td class="us">500 products back in 7 days</td></tr>
-      <tr><td>Accuracy</td><td>Specs copied by hand, easy to mistype</td><td class="us">Every spec sourced and checked</td></tr>
-      <tr><td>Consistency</td><td>Every person writes titles differently</td><td class="us">One format across the whole catalog</td></tr>
-      <tr><td>New products</td><td>Supplier files pile up in a backlog</td><td class="us">Handled every month</td></tr>
-      <tr><td>Cost</td><td>Staff hours pulled from sales and the counter</td><td class="us">A flat price per batch</td></tr>
-    </tbody>
+<section id="pricing"><div class="wrap">
+  <h2>Start free. Pay once you've seen it.</h2>
+  <table class="price">
+    <tr><th>Free sample</th><td>10 of your products, cleaned up so you can check the quality yourself. No commitment.</td><td class="amt">$0</td></tr>
+    <tr><th>Pilot</th><td>500 products delivered in 7 days, with the import file, photos, and a list of anything flagged.</td><td class="amt">$750</td></tr>
+    <tr><th>Ongoing</th><td>New products and supplier changes handled every month, priced by how many you add. Cancel anytime.</td><td class="amt">By volume</td></tr>
   </table>
 </div></section>
 
-<section class="alt price" id="pricing"><div class="wrap">
-  <div class="head center"><span class="eyebrow">Pricing</span><h2>Start free. Pay when you see it work.</h2><p>No contracts. See the results on your own products first.</p></div>
-  <div class="three">
-    <div class="card"><span class="tier">Free sample</span><div class="amt">$0</div><p>See the quality on your own catalog.</p><ul><li>10 of your products</li><li>Before and after for each one</li><li>No commitment</li></ul><a class="btn light" href="#start">Get a free sample</a></div>
-    <div class="card hot"><span class="tier">Pilot</span><div class="amt">$750</div><p>A real batch, ready to publish.</p><ul><li>500 products</li><li>Delivered in 7 days</li><li>Import file plus photos</li><li>Duplicates and errors flagged</li></ul><a class="btn dark" href="#start">Start a pilot</a></div>
-    <div class="card"><span class="tier">Ongoing</span><div class="amt">Custom <small>/ month</small></div><p>Keep your catalog clean as it grows.</p><ul><li>New products every month</li><li>Supplier updates handled</li><li>Priced by volume</li><li>Cancel anytime</li></ul><a class="btn light" href="mailto:michael@partpolish.com?subject=Ongoing%20pricing">Ask about pricing</a></div>
-  </div>
-</div></section>
-
 <section id="faq"><div class="wrap">
-  <div class="head center"><span class="eyebrow">FAQ</span><h2>Questions distributors ask.</h2></div>
+  <h2>Questions distributors ask</h2>
   <div class="faq">
-    <details><summary>What do you need from me to start?</summary><p>Just your store link, or a spreadsheet export of your products. Supplier files help but aren't required.</p></details>
-    <details><summary>Will this change my SKUs or prices?</summary><p>No. Your SKUs and pricing stay exactly as they are. We improve the name, description, specs, category and photo.</p></details>
-    <details><summary>How do you make sure the specs are right?</summary><p>Every product is matched to its exact manufacturer part number, and every spec comes from the manufacturer's own page or spec sheet. Anything we can't confirm is flagged for you, never guessed.</p></details>
-    <details><summary>What store platforms do you work with?</summary><p>We deliver a ready-to-import file for Shopify, and a clean spreadsheet that works with BigCommerce, WooCommerce and most ERP and PIM systems.</p></details>
-    <details><summary>Where do the photos come from?</summary><p>From the manufacturer. If you already receive image files from your suppliers, we match those to each product too.</p></details>
-    <details><summary>Do I need to get on a call?</summary><p>No. Everything can be handled by email. If you'd like to talk, we're happy to.</p></details>
+    <details><summary>What do you need from me to start?</summary><p>Just your store's web address, or a spreadsheet export of your products. That's enough for the free sample.</p></details>
+    <details><summary>Will this change my SKUs or prices?</summary><p>No. Your SKUs and prices stay exactly as they are. We improve the name, description, specs, category and photo.</p></details>
+    <details><summary>How do you make sure the specs are right?</summary><p>Every product is matched to its exact manufacturer part number, and every spec comes from the manufacturer's own page or spec sheet. Anything we can't confirm is flagged for you instead of guessed.</p></details>
+    <details><summary>Where do the photos come from?</summary><p>From the manufacturer. If your suppliers already send you image files, we match those to each product too.</p></details>
+    <details><summary>Do I need to get on a call?</summary><p>No. Everything can happen over email. If you'd rather talk it through, that's fine too.</p></details>
   </div>
 </div></section>
 
-<section id="start" class="closing"><div class="wrap">
-  <h2>Want to see your own products cleaned up?</h2>
-  <p>Email your store link to <a href="mailto:michael@partpolish.com?subject=Free%2010-product%20sample&body=Store%20link%3A%20">michael@partpolish.com</a> and I'll send back 10 finished listings, free. Usually within two business days.</p>
-  <p class="who">Michael Patterson, PartPolish · Sugar Hill, Georgia</p>
+<section class="closing" id="start"><div class="wrap">
+  <h2>See your own listings cleaned up before you spend anything.</h2>
+  <form class="ask" data-ask novalidate>
+    <label for="store2">Your store's web address</label>
+    <input id="store2" name="store" type="url" inputmode="url" autocomplete="url" placeholder="yourstore.com" required>
+    <button class="btn" type="submit">Clean up 10 listings free</button>
+  </form>
+  <p class="small" data-msg>Or email <a href="mailto:michael@partpolish.com">michael@partpolish.com</a> directly.</p>
+  <p class="sign">Michael Patterson, PartPolish · Sugar Hill, Georgia</p>
 </div></section>
+</main>
 
-<footer><div class="wrap">
-  <div class="fgrid">
-    <div><a class="logo" href="#"><i></i>PartPolish</a><p>Accurate, complete product data for tool and industrial supply distributors. Based in Sugar Hill, Georgia.</p></div>
-    <div><h4>Product</h4><a href="#how">How it works</a><a href="#accuracy">Accuracy</a><a href="#pricing">Pricing</a></div>
-    <div><h4>Company</h4><a href="#faq">FAQ</a><a href="mailto:michael@partpolish.com">Contact</a></div>
-    <div><h4>Get started</h4><a href="#start">Free sample</a><a href="mailto:michael@partpolish.com?subject=Pilot">Start a pilot</a></div>
-  </div>
-  <div class="legal"><span>© 2026 PartPolish. All rights reserved.</span><span>michael@partpolish.com</span></div>
-</div></footer>
+<footer><div class="wrap"><span>© 2026 PartPolish</span><span><a href="mailto:michael@partpolish.com">michael@partpolish.com</a></span></div></footer>
 
 <script>
-(function(){var s=document.getElementById('slider'),r=s.querySelector('input');
-r.addEventListener('input',function(){s.style.setProperty('--pos',r.value+'%')});})();
+document.querySelectorAll('[data-ask]').forEach(function(f){
+  var msg=f.nextElementSibling, original=msg.innerHTML;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=f.store.value.trim();
+    if(!/^[^\s]+\.[a-z]{2,}/i.test(v.replace(/^https?:\/\//,''))){
+      msg.className='small err';msg.textContent="Enter your store's web address, like yourstore.com";f.store.focus();return;
+    }
+    var body='Hi Michael,%0D%0A%0D%0APlease clean up 10 listings from our store as a free sample:%0D%0A'+encodeURIComponent(v)+'%0D%0A%0D%0AThanks';
+    location.href='mailto:michael@partpolish.com?subject='+encodeURIComponent('Free sample: '+v)+'&body='+body;
+    msg.className='small';msg.innerHTML='Your email app should open with the request filled in. If it doesn\'t, email <a href="mailto:michael@partpolish.com">michael@partpolish.com</a>.';
+  });
+  f.store.addEventListener('input',function(){if(msg.classList.contains('err')){msg.className='small';msg.innerHTML=original}});
+});
 </script>
 </body>
 </html>
