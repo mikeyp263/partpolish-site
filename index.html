@@ -41,8 +41,11 @@ form.ask input{flex:1 1 280px;font:500 1rem Archivo,sans-serif;padding:15px 16px
 form.ask input::placeholder{color:#7d8287}
 .btn{font-weight:700;font-size:1rem;padding:15px 22px;border-radius:6px;border:1.5px solid var(--graphite);background:var(--graphite);color:#fff;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s,border-color .2s}
 .btn:hover{background:var(--brass-deep);border-color:var(--brass-deep)}
+.btn:disabled{background:var(--steel);border-color:var(--steel);cursor:default}
 .small{font:400 .9rem Archivo,sans-serif;color:var(--steel);margin:12px 0 0}
 .small.err{color:var(--raw)}
+.done{font:600 1.1rem/1.5 Archivo,sans-serif;color:var(--graphite);margin:14px 0 0;max-width:46ch}
+.done b{color:var(--brass-deep)}
 
 .sheet{margin:64px 0 0;background:var(--white);border:1px solid var(--rule);border-radius:14px;box-shadow:0 30px 60px -40px rgba(23,25,27,.45);overflow:hidden}
 .rawline{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;padding:16px 28px;border-bottom:1px solid var(--rule);background:#fbfaf7;font-size:.9rem}
@@ -140,9 +143,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   <h1>Your customers search “letter V drill bit.” Your store says <span class="code">VDR/CCTXGO</span></h1>
   <p class="lede">We turn supplier codes into finished product listings: the exact manufacturer part, a clear name, the photo and every spec. You import one file. Your SKUs stay the same.</p>
 
-  <form class="ask" data-ask novalidate>
+  <form class="ask" data-ask action="https://formspree.io/f/mvkkybba" method="POST" novalidate>
+    <input type="hidden" name="_subject" value="Free sample request">
     <label for="store1">Your store's web address</label>
     <input id="store1" name="store" type="url" inputmode="url" autocomplete="url" placeholder="yourstore.com" required>
+    <label for="email1">Your email</label>
+    <input id="email1" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@yourstore.com" required>
     <button class="btn" type="submit">Clean up 10 listings free</button>
   </form>
   <p class="small" data-msg>We'll email you 10 of your own listings, finished. No call needed.</p>
@@ -199,7 +205,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
 
 <div class="promise" id="accuracy"><div class="wrap">
   <h2>A wrong spec is worse than a missing one.</h2>
-  <div class="prose"><p>A wrong length or shank size means a return and a customer who doesn't come back. So every value we add has to come from the manufacturer, and anything we can't confirm is left blank and flagged for you.</p></div>
+  <div class="prose"><p>Software does the matching. I review every listing before it's delivered, and anything the manufacturer doesn't confirm gets flagged, not guessed.</p><p>A wrong length or shank size means a return and a customer who doesn't come back. So every value we add has to come from the manufacturer's own page or spec sheet.</p></div>
   <dl>
     <div><dt>Every value is sourced</dt><dd>Each spec is tied to the manufacturer page or spec sheet it came from.</dd></div>
     <div><dt>Unsure means flagged</dt><dd>If a source doesn't confirm it, it's held for your review. Never guessed.</dd></div>
@@ -229,9 +235,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
 
 <section class="closing" id="start"><div class="wrap">
   <h2>See your own listings cleaned up before you spend anything.</h2>
-  <form class="ask" data-ask novalidate>
+  <form class="ask" data-ask action="https://formspree.io/f/mvkkybba" method="POST" novalidate>
+    <input type="hidden" name="_subject" value="Free sample request">
     <label for="store2">Your store's web address</label>
     <input id="store2" name="store" type="url" inputmode="url" autocomplete="url" placeholder="yourstore.com" required>
+    <label for="email2">Your email</label>
+    <input id="email2" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@yourstore.com" required>
     <button class="btn" type="submit">Clean up 10 listings free</button>
   </form>
   <p class="small" data-msg>Or email <a href="mailto:michael@partpolish.com">michael@partpolish.com</a> directly.</p>
@@ -244,17 +253,35 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
 <script>
 document.querySelectorAll('[data-ask]').forEach(function(f){
   var msg=f.nextElementSibling, original=msg.innerHTML;
+  var btn=f.querySelector('button[type=submit]'), btnText=btn.textContent;
+  function fail(html){msg.className='small err';msg.innerHTML=html;}
+  function reset(){if(msg.classList.contains('err')){msg.className='small';msg.innerHTML=original;}}
   f.addEventListener('submit',function(e){
     e.preventDefault();
-    var v=f.store.value.trim();
-    if(!/^[^\s]+\.[a-z]{2,}/i.test(v.replace(/^https?:\/\//,''))){
-      msg.className='small err';msg.textContent="Enter your store's web address, like yourstore.com";f.store.focus();return;
+    var store=f.store.value.trim(), email=f.email.value.trim();
+    if(!/^[^\s]+\.[a-z]{2,}/i.test(store.replace(/^https?:\/\//,''))){
+      fail("Enter your store's web address, like yourstore.com");f.store.focus();return;
     }
-    var body='Hi Michael,%0D%0A%0D%0APlease clean up 10 listings from our store as a free sample:%0D%0A'+encodeURIComponent(v)+'%0D%0A%0D%0AThanks';
-    location.href='mailto:michael@partpolish.com?subject='+encodeURIComponent('Free sample: '+v)+'&body='+body;
-    msg.className='small';msg.innerHTML='Your email app should open with the request filled in. If it doesn\'t, email <a href="mailto:michael@partpolish.com">michael@partpolish.com</a>.';
+    if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)){
+      fail("Enter your email so I can send the sample back");f.email.focus();return;
+    }
+    btn.disabled=true;btn.textContent='Sending…';reset();
+    fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}})
+      .then(function(r){
+        if(!r.ok)throw new Error('bad status');
+        var done=document.createElement('p');
+        done.className='done';
+        done.innerHTML="<b>Got it.</b> I'll email you 10 of your listings, usually within two business days.";
+        f.replaceWith(done);
+        if(msg&&msg.parentNode)msg.remove();
+      })
+      .catch(function(){
+        btn.disabled=false;btn.textContent=btnText;
+        fail('That didn\'t go through. Email <a href="mailto:michael@partpolish.com">michael@partpolish.com</a> directly.');
+      });
   });
-  f.store.addEventListener('input',function(){if(msg.classList.contains('err')){msg.className='small';msg.innerHTML=original}});
+  f.store.addEventListener('input',reset);
+  f.email.addEventListener('input',reset);
 });
 </script>
 </body>
