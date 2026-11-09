@@ -93,9 +93,9 @@ h3.sec{font:400 clamp(2rem,4vw,3.1rem)/1.02 Newsreader,serif;letter-spacing:-.02
 .what li b{display:block;font-weight:600}
 .what li span{color:var(--grey)}
 .what .was{display:block;font:400 .8rem "IBM Plex Mono",monospace;color:#a3311a;margin-top:2px}
-.crop{grid-column:1/6;grid-row:4;margin-top:40px;position:relative;height:230px;overflow:hidden;background:#fff;border-top:1px solid var(--ink)}
-.crop img{position:absolute;right:-8%;top:-30%;width:95%;transform:rotate(-30deg);mix-blend-mode:multiply}
-.crop figcaption{position:absolute;left:0;bottom:8px;font-size:.78rem;color:var(--grey);background:#fff;padding:2px 6px 2px 0}
+.crop{grid-column:1/6;grid-row:4;margin-top:40px;background:#fff;border-top:1px solid var(--ink)}
+.crop img{display:block;width:100%;max-width:360px;aspect-ratio:1;object-fit:contain;margin:0 auto;padding:24px;box-sizing:border-box;mix-blend-mode:multiply}
+.crop figcaption{font-size:.78rem;color:var(--grey);padding:10px 16px;border-top:1px solid var(--rule)}.crop figcaption b{color:var(--ink);font-weight:600}
 
 /* how: one long line of three steps, read across */
 .how h3.sec{grid-column:1/8}
