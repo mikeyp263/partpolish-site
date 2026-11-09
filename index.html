@@ -87,7 +87,7 @@ h3.sec{font:400 clamp(2rem,4vw,3.1rem)/1.02 Newsreader,serif;letter-spacing:-.02
 /* what you get: text column + numbered margin notes + cropped photo bleeding right */
 .what h3.sec{grid-column:1/6;grid-row:2}
 .what .body{grid-column:1/6;grid-row:3;font:400 1.15rem/1.55 Newsreader,serif;margin-top:22px}
-.what ol{grid-column:7/13;grid-row:2/6;align-self:start;list-style:none;margin:0;padding:0;counter-reset:n}
+.what .left{grid-column:1/6;grid-row:2}.what ol{grid-column:7/13;grid-row:2;align-self:start;list-style:none;margin:0;padding:0;counter-reset:n}
 .what li{counter-increment:n;display:grid;grid-template-columns:34px 1fr;padding:14px 0;border-top:1px solid var(--rule)}
 .what li:before{content:counter(n);font:400 .8rem "IBM Plex Mono",monospace;color:var(--blue);padding-top:4px}
 .what li b{display:block;font-weight:600}
@@ -219,8 +219,8 @@ footer .page{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
 
 <section id="what" class="what"><div class="page grid">
   <div class="kicker-rule"></div>
-  <h3 class="sec">Everything a buyer checks before they order.</h3>
-  <div class="body"><p>A contractor looking at a listing wants to know three things fast: is this the exact part, will it fit, and how many do I get. A supplier code answers none of them.</p></div>
+  <div class="left"><h3 class="sec">Everything a buyer checks before they order.</h3>
+  <div class="body"><p>A contractor looking at a listing wants to know three things fast: is this the exact part, will it fit, and how many do I get. A supplier code answers none of them.</p></div></div>
   <ol>
     <li><div><b>A name people search for</b><span>Brand, size and type first, written the way buyers type it.<span class="was">was: V H.S.JOBBER DRILL BIT XGO</span></span></div></li>
     <li><div><b>The exact part</b><span>Every item matched to its manufacturer and part number.</span></div></li>
@@ -228,7 +228,6 @@ footer .page{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
     <li><div><b>The real photo</b><span>The manufacturer's product photo, plus the image files for your records.</span></div></li>
     <li><div><b>Problems found along the way</b><span>Like the same drill listed under two SKUs.</span></div></li>
   </ol>
-  <figure class="crop" style="margin-left:0;margin-right:0"><img src="img/milwaukee-48-89-4607.jpg" alt="Milwaukee 5/32 inch titanium-coated impact drill bit" loading="lazy"><figcaption><b>Fig. 2.</b> Milwaukee 48-89-4607, matched from “5/32 TITANIUM DRILL HEX BIT”</figcaption></figure>
 </div></section>
 
 <section id="how" class="how"><div class="page grid">
