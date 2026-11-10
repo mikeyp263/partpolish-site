@@ -119,7 +119,8 @@ h3.sec{font:400 clamp(2rem,4vw,3.1rem)/1.02 Newsreader,serif;letter-spacing:-.02
 .row{display:flex;align-items:baseline;gap:10px;padding:16px 0 4px}
 .row b{font:500 1.35rem Newsreader,serif}
 .row .dots{flex:1;border-bottom:1px dotted var(--grey);transform:translateY(-6px)}
-.row .amt{font:500 1.35rem "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.row .amt{font:500 1.35rem "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+.row .amt small{font-size:.8rem;font-weight:400;color:var(--grey)}
 .pricing .desc{margin:0 0 6px;color:var(--grey);font-size:.95rem;max-width:52ch}
 .pricing .fine{margin-top:22px;font-size:.82rem;color:var(--grey)}
 
@@ -257,21 +258,24 @@ footer .page{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   <div class="list">
     <div class="row"><b>Free sample</b><span class="dots"></span><span class="amt">$0</span></div>
     <p class="desc">10 of your products, cleaned up so you can judge the quality yourself. No commitment.</p>
-    <div class="row"><b>Pilot</b><span class="dots"></span><span class="amt">$750</span></div>
-    <p class="desc">500 products in 7 days, with the import file, the photos, and a list of anything flagged.</p>
-    <div class="row"><b>Every month after</b><span class="dots"></span><span class="amt">by volume</span></div>
-    <p class="desc">New products and supplier changes handled as they come in. Cancel anytime.</p>
+    <div class="row"><b>Catalog cleanup</b><span class="dots"></span><span class="amt">$1.50 <small>each</small></span></div>
+    <p class="desc">One time, per product, $300 minimum. 500 products is $750 and takes about 7 days. You get the import file, the photos, and a list of anything flagged.</p>
+    <div class="row"><b>Larger catalogs</b><span class="dots"></span><span class="amt">from $0.75</span></div>
+    <p class="desc">$1.00 each over 1,000 products, $0.75 each over 5,000. You can start with 500 and decide on the rest after.</p>
+    <div class="row"><b>Monthly upkeep</b><span class="dots"></span><span class="amt">$150 <small>/ mo</small></span></div>
+    <p class="desc">Up to 100 new or changed products a month kept clean, $1.25 each beyond that. Cancel anytime.</p>
   </div>
 </div></section>
 
 <section id="faq" class="faq"><div class="page grid">
   <div class="kicker-rule"></div>
-  <h3 class="sec">Questions distributors ask</h3>
+  <h3 class="sec">Questions</h3>
   <div class="qa">
     <div><b>What do you need from me to start?</b><p>Just your store's web address, or a spreadsheet export of your products. That's enough for the free sample.</p></div>
     <div><b>Will this change my SKUs or prices?</b><p>No. Your SKUs and prices stay exactly as they are. Only the name, description, specs, category and photo improve.</p></div>
     <div><b>How do you make sure the specs are right?</b><p>Every product is matched to its exact manufacturer part number, and every spec comes from the manufacturer's own page or spec sheet. Anything that can't be confirmed is flagged instead of guessed.</p></div>
-    <div><b>Where do the photos come from?</b><p>From the manufacturer. If your suppliers already send you image files, those get matched to each product too.</p></div>
+    <div><b>Where do the photos come from?</b><p>From the manufacturer. If a product already has a good photo on your store and the manufacturer doesn't publish one, yours stays.</p></div>
+    <div><b>What if I only have a couple hundred products?</b><p>That's fine. Small catalogs are a flat $300, and the free sample works the same way.</p></div>
     <div><b>Do I need to get on a call?</b><p>No. Everything can happen over email. If you'd rather talk it through, that's fine too.</p></div>
   </div>
 </div></section>
